@@ -8,21 +8,29 @@ const Expenses = (props) => {
 
   let expense=[...props.items]
   console.log("expense length "+expense.length)
-  return (
 
-    expense.map(value=>{
+  
 
-      return (
-        <Card className="expenses"   key={value.id}>
+
+  let expenseData=expense.map((value)=>{
+
+    return (
+      
       <ExpenseItem
-        title={value.title}
-        amount={value.amount}
-        date={value.date}
-      />
-       </Card>
-      )
-    }
+      key ={value.id}
+      title={value.title}
+      amount={value.amount}
+      date={value.date}
+    />
+   
     )
+  }
+  )
+
+  return (
+    <Card className="expenses" >
+    {expenseData}
+    </Card>
     
   );
 }

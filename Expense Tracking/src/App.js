@@ -3,6 +3,8 @@ import React,{useState} from 'react';
 import Expenses from './components/Expenses/Expenses';
 
 import NewExpenses from './components/NewExpenses/NewExpenses'
+import ExpenseFilter from'./components/Expenses/ExpenseFilter'
+import { isRegExp } from 'util';
 
 const App = () => {
 
@@ -31,24 +33,67 @@ const App = () => {
     },
   ];
 
+  const noexpenses =[
+    {
+      id: '',
+      title: 'No Expense Found',
+      amount:0,
+      date: new Date(1999, 1, 1),
+    }
+  ]
+
   const[Expense,setExpense]=useState(expenses);
+
+  const[filterExpense,setfilterExpense]=useState(expenses);
 
 
 
   let ModifyExpense=(data)=>{
 
-      let localExpense=[...Expense,data]
+      let localExpense=[...filterExpense,data]
 
   
    setExpense(localExpense)
+   setfilterExpense(localExpense)
 
   }
 
+
+
+
+  let yearfilterHandler=(yeardata)=>{
+
+    console.log("Year selected " +yeardata)
+
+    let localexpense= [...filterExpense]
+
+   const newExpenses= localexpense.filter((data)=>{
+
+
+    console.log(data.date.getFullYear().toString()===yeardata.toString())
+    return data.date.getFullYear().toString()===yeardata.toString()
+
+
+    })
+
+    if(yeardata==='Select Year'){
+      setExpense(noexpenses)
+
+    } else{
+      setExpense(newExpenses)
+    }
+ 
+   
+
+
+
+  }
 
   return (
     <div>
       <NewExpenses onModifyExp={ModifyExpense}/>
       <h2>Let's get started!</h2>
+      <ExpenseFilter onDate={filterExpense} onYear={yearfilterHandler}/>
       <Expenses items={Expense} />
     </div>
   );

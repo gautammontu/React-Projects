@@ -1,0 +1,60 @@
+.par{
+
+   
+    padding: 1.5rem;
+    height: 60px;
+    background-color: rgb(83, 20, 141);
+    color: white;
+    font-weight: bold;
+    font-size: larger;
+}
+
+.modal{
+
+    display: flex;
+    justify-content: center;
+    
+    align-items: flex-start;
+    padding: 1.3rem;
+    position: relative;
+    top:-55px;
+    border-radius: 10px;
+    z-index: 10;
+    
+  
+}
+.errormsg{
+
+    display: flex;
+flex-flow: column;
+
+border: 1px solid black;
+align-content: center;
+padding: 0;
+border-radius: 10px;
+background-color:white;
+width: 80vh;
+row-gap: 10px;
+height: 20vh;
+
+
+}
+
+
+.modal button{
+
+    align-items: flex-end;
+    padding: .5rem;
+    position: relative;
+    right: -670px;
+    top:40px;
+    background-color: rgb(39, 39, 99);
+    color: white;
+    
+    
+}
+.errorTxt{
+
+    text-align: left;
+    padding: .5rem;
+}
